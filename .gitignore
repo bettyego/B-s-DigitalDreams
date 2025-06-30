@@ -22,3 +22,25 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Large design files (keep only essential images)
+public/my graphic design/
+*.psd
+*.cdr
+*.heic
+*.avif
+
+# Keep only essential images for the website
+!public/bettylogo.png
+!public/her.JPG
+!public/web*.jpg
+!public/web*.webp
+!public/graphic*.jpeg
+!public/graphic*.webp
