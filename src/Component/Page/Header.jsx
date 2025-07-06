@@ -6,6 +6,7 @@ import { useTheme } from '../../context/ThemeContext';
 import Button from '../ui/Button';
 
 const Header = () => {
+  
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
