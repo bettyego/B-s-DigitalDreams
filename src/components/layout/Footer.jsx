@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Mail, Heart, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -39,6 +41,20 @@ const Footer = () => {
       icon: Twitter,
     },
   ];
+
+  // Scroll to Services section and highlight service
+  const handleServiceClick = (service) => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollToService: service } });
+    } else {
+      const section = document.getElementById('services-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        // Optionally, highlight the service (implement highlight logic in Services section)
+        window.dispatchEvent(new CustomEvent('highlightService', { detail: service }));
+      }
+    }
+  };
 
   return (
     <footer className="bg-gradient-to-tr from-purple-900 to-purple-600 text-white">
@@ -108,8 +124,14 @@ const Footer = () => {
             <h3 className="text-xl font-semibold mb-6">What I Do</h3>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service} className="text-sm text-purple-200">
-                  {service}
+                <li key={service}>
+                  <button
+                    type="button"
+                    className="text-sm text-purple-200 hover:text-white transition-colors duration-300 w-full text-left"
+                    onClick={() => handleServiceClick(service)}
+                  >
+                    {service}
+                  </button>
                 </li>
               ))}
             </ul>
