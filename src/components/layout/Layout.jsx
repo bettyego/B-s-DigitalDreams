@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import ScrollToTop from '../common/ScrollToTop';
 import { useTheme } from '../../context/ThemeContext';
+import { trackPageView } from '../../utils/analytics';
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const { preferences } = useTheme();
-  
+
+  // Track page views
+  useEffect(() => {
+    trackPageView(location.pathname, document.title);
+  }, [location.pathname]);
+
   // Determine if we should show header/footer based on route
   const isHomePage = location.pathname === '/';
   const showHeaderFooter = true; // You can customize this logic

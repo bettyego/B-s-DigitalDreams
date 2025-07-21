@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { usePageSEO } from '../../hooks/useSEO';
+import { trackFormSubmission } from '../../utils/analytics';
 import {
   Mail,
   Phone,
@@ -17,6 +19,9 @@ import Card from '../ui/Card';
 import { sendEmail, validateFormData } from '../../services/emailService';
 
 const Contact = () => {
+  // Add SEO for contact page
+  usePageSEO();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -59,6 +64,9 @@ const Contact = () => {
         setIsSubmitted(true);
         setSubmitMessage(result.message);
 
+        // Track successful form submission
+        trackFormSubmission('contact_form', true);
+
         // Reset form after 3 seconds
         setTimeout(() => {
           setIsSubmitted(false);
@@ -74,10 +82,14 @@ const Contact = () => {
         }, 3000);
       } else {
         setSubmitMessage(result.message);
+        // Track failed form submission
+        trackFormSubmission('contact_form', false, result.message);
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitMessage('There was an error sending your message. Please try again.');
+      // Track form submission error
+      trackFormSubmission('contact_form', false, error.message);
     } finally {
       setIsSubmitting(false);
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { usePageSEO } from '../../hooks/useSEO';
 import {
   Code,
   Palette,
@@ -15,6 +16,9 @@ import Card from '../ui/Card';
 import { downloadCV } from '../../utils/downloadUtils';
 
 const AboutUs = () => {
+  // Add SEO for about page
+  usePageSEO();
+
   const skills = [
     { name: 'React & Next.js', level: 95, color: 'bg-blue-500' },
     { name: 'JavaScript/TypeScript', level: 90, color: 'bg-yellow-500' },

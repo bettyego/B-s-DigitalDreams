@@ -5,11 +5,14 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 import { ThemeProvider } from "./context/ThemeContext";
+import { initAnalytics, initErrorTracking, trackPerformance } from "./utils/analytics";
 import "./index.css";
 
-// Performance monitoring (optional)
+// Initialize analytics and monitoring in production
 if (import.meta.env.PROD) {
-  // Add performance monitoring here if needed
+  initAnalytics();
+  initErrorTracking();
+  trackPerformance();
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(

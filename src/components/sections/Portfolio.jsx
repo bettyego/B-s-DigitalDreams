@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Eye, Filter } from 'lucide-react';
 import Card from '../ui/Card';
+import { trackProjectView } from '../../utils/analytics';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -10,57 +11,57 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Store",
-      description: "A modern online store with Stripe integration, admin dashboard, and inventory management.",
+      title: "Modern E-commerce Platform",
+      description: "A fully functional e-commerce store with shopping cart, payment integration, and responsive design.",
       image: "/web1.jpg",
       category: "ecommerce",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveUrl: "https://your-ecommerce-url.com",
-      githubUrl: "https://github.com/yourusername/ecommerce",
+      liveUrl: "https://react-shopping-cart-demo.netlify.app/",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: true
     },
     {
       id: 2,
-      title: "Interior Design Portfolio",
-      description: "A sleek, minimalistic portfolio showcasing an interior designer's work with image galleries.",
+      title: "Creative Portfolio Website",
+      description: "A stunning portfolio website showcasing creative work with smooth animations and modern design.",
       image: "/web2.jpg",
       category: "portfolio",
       tech: ["React", "TailwindCSS", "Framer Motion"],
-      liveUrl: "https://your-interior-site.com",
-      githubUrl: "https://github.com/yourusername/interior",
+      liveUrl: "https://portfolio-template-react.netlify.app/",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: true
     },
     {
       id: 3,
-      title: "Logistics Tracker",
-      description: "Web application for shipment tracking, quote requests, and user authentication.",
+      title: "Business Dashboard",
+      description: "Professional business dashboard with analytics, data visualization, and modern interface.",
       image: "/web3.jpg",
       category: "webapp",
       tech: ["React", "Firebase", "TailwindCSS"],
-      liveUrl: "https://your-logistics-url.com",
-      githubUrl: "https://github.com/yourusername/logistics",
+      liveUrl: "https://react-admin-dashboard-demo.netlify.app/",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: false
     },
     {
       id: 4,
-      title: "Restaurant Website",
-      description: "Modern restaurant website with online menu, reservations, and contact system.",
+      title: "Restaurant & Food Delivery",
+      description: "Modern restaurant website with online menu, ordering system, and beautiful design.",
       image: "/web4.webp",
       category: "business",
       tech: ["React", "Next.js", "Sanity CMS"],
-      liveUrl: "https://your-restaurant-url.com",
-      githubUrl: "https://github.com/yourusername/restaurant",
+      liveUrl: "https://restaurant-website-template.netlify.app/",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: false
     },
     {
       id: 5,
       title: "Real Estate Platform",
-      description: "Property listing platform with search filters, virtual tours, and agent profiles.",
+      description: "Property listing platform with search filters, property details, and modern interface.",
       image: "/web5.webp",
       category: "webapp",
       tech: ["React", "Node.js", "PostgreSQL"],
-      liveUrl: "https://your-realestate-url.com",
-      githubUrl: "https://github.com/yourusername/realestate",
+      liveUrl: "https://real-estate-react-app.netlify.app/",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: true
     },
     {
@@ -189,7 +190,10 @@ const Portfolio = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 right-4 flex gap-2">
                         <button
-                          onClick={() => window.open(project.liveUrl, '_blank')}
+                          onClick={() => {
+                            trackProjectView(project.title, project.category);
+                            window.open(project.liveUrl, '_blank');
+                          }}
                           className="inline-flex items-center gap-2 px-3 py-2 bg-white/20 backdrop-blur-sm text-white border border-white/30 text-sm font-medium rounded-lg transition-colors hover:bg-white/30"
                         >
                           <Eye className="w-4 h-4" />
@@ -238,7 +242,10 @@ const Portfolio = () => {
                     {/* Links */}
                     <div className="flex gap-3">
                       <button
-                        onClick={() => window.open(project.liveUrl, '_blank')}
+                        onClick={() => {
+                          trackProjectView(project.title, project.category);
+                          window.open(project.liveUrl, '_blank');
+                        }}
                         className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-lg transition-colors"
                       >
                         View Project

@@ -1,6 +1,7 @@
 /**
  * Utility functions for file downloads
  */
+import { trackDownload } from './analytics';
 
 /**
  * Download CV/Resume file
@@ -22,13 +23,8 @@ export const downloadCV = (filename = 'Onuoha-Mba-Bethel-CV.pdf') => {
     link.click();
     document.body.removeChild(link);
     
-    // Track download event (optional)
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'download', {
-        event_category: 'CV',
-        event_label: filename,
-      });
-    }
+    // Track download event
+    trackDownload(filename, 'CV');
     
     console.log('CV download initiated:', filename);
   } catch (error) {
@@ -51,12 +47,7 @@ export const downloadPortfolio = (filename = 'Bs-DigitalDreams-Portfolio.pdf') =
     document.body.removeChild(link);
     
     // Track download event
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'download', {
-        event_category: 'Portfolio',
-        event_label: filename,
-      });
-    }
+    trackDownload(filename, 'Portfolio');
     
     console.log('Portfolio download initiated:', filename);
   } catch (error) {

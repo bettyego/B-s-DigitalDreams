@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, Heart, ExternalLink } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Mail, Heart, ExternalLink, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { trackSocialClick } from '../../utils/analytics';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -37,7 +38,7 @@ const Footer = () => {
     },
     {
       name: 'Twitter',
-      href: '#',
+      href: 'https://twitter.com/BsDigitalDreams',
       icon: Twitter,
     },
   ];
@@ -80,14 +81,27 @@ const Footer = () => {
             <p className="text-sm text-purple-100 leading-relaxed mb-6">
               Creating modern, responsive, and captivating websites that bring your ideas to life and elevate your online presence.
             </p>
-            <div className="flex items-center text-sm text-purple-200">
-              <Mail className="w-4 h-4 mr-2" />
-              <a 
-                href="mailto:nwabethroseonuoha@gmail.com"
-                className="hover:text-white transition-colors"
-              >
-                nwabethroseonuoha@gmail.com
-              </a>
+            <div className="space-y-3">
+              <div className="flex items-center text-sm text-purple-200">
+                <Mail className="w-4 h-4 mr-2" />
+                <a
+                  href="mailto:nwabethroseonuoha@gmail.com?subject=Project Inquiry from Website&body=Hi Bethel,%0D%0A%0D%0AI'm interested in discussing a project with you.%0D%0A%0D%0ABest regards"
+                  className="hover:text-white transition-colors"
+                  onClick={() => trackSocialClick('Email', 'nwabethroseonuoha@gmail.com')}
+                >
+                  nwabethroseonuoha@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center text-sm text-purple-200">
+                <Phone className="w-4 h-4 mr-2" />
+                <a
+                  href="tel:+2348064111501"
+                  className="hover:text-white transition-colors"
+                  onClick={() => trackSocialClick('Phone', '+2348064111501')}
+                >
+                  +234 806 411 1501
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -157,6 +171,7 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackSocialClick(social.name, social.href)}
                     className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors duration-300 group"
                     aria-label={`Follow us on ${social.name}`}
                   >

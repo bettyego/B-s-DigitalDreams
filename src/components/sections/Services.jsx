@@ -79,7 +79,7 @@ const Services = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="services-section" className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div

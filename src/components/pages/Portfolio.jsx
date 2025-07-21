@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { usePageSEO } from '../../hooks/useSEO';
+import { trackProjectView } from '../../utils/analytics';
 import {
   ExternalLink,
-  Github,
+  Github as GitHubIcon,
   Eye,
   Filter,
   Search,
@@ -15,6 +17,9 @@ import Card from '../ui/Card';
 import { downloadPortfolio } from '../../utils/downloadUtils';
 
 const Portfolio = () => {
+  // Add SEO for portfolio page
+  usePageSEO();
+
   const [activeFilter, setActiveFilter] = useState('all');
   const [viewMode, setViewMode] = useState('grid');
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,7 +33,7 @@ const Portfolio = () => {
       category: "ecommerce",
       tech: ["React", "Node.js", "MongoDB", "Stripe", "TailwindCSS"],
       liveUrl: "https://b-s-digital-dreams.vercel.app/",
-      githubUrl: "https://github.com/yourusername/fashion-store",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: true,
       rating: 5,
       client: "Fashion Forward Inc.",
@@ -42,7 +47,7 @@ const Portfolio = () => {
       category: "portfolio",
       tech: ["React", "TailwindCSS", "Framer Motion", "Sanity CMS"],
       liveUrl: "https://elcee-stores.vercel.app/",
-      githubUrl: "https://github.com/yourusername/interior-portfolio",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: true,
       rating: 5,
       client: "Rodriguez Designs",
@@ -56,7 +61,7 @@ const Portfolio = () => {
       category: "webapp",
       tech: ["React", "Firebase", "Google Maps API", "TailwindCSS"],
       liveUrl: "https://www.richmarkfoundation.com/",
-      githubUrl: "https://github.com/yourusername/logistics-tracker",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: false,
       rating: 4,
       client: "Swift Logistics",
@@ -70,7 +75,7 @@ const Portfolio = () => {
       category: "business",
       tech: ["React", "Next.js", "PostgreSQL", "Stripe"],
       liveUrl: "https://blukoak-bank.vercel.app/",
-      githubUrl: "https://github.com/yourusername/restaurant",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: false,
       rating: 5,
       client: "Chen's Kitchen",
@@ -84,7 +89,7 @@ const Portfolio = () => {
       category: "webapp",
       tech: ["React", "Node.js", "PostgreSQL", "AWS S3"],
       liveUrl: "https://pinebridge.vercel.app/",
-      githubUrl: "https://github.com/yourusername/realestate",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: true,
       rating: 5,
       client: "Prime Properties",
@@ -97,8 +102,8 @@ const Portfolio = () => {
       image: "/event.jpg",
       category: "portfolio",
       tech: ["React", "GSAP", "TailwindCSS", "Contentful"],
-      liveUrl: "https://chi-balloon.vercel.app/",
-      githubUrl: "https://github.com/yourusername/creative-agency",
+      liveUrl: "https://www.pinchofluxe.com/",
+      githubUrl: "https://github.com/bettyego/B-s-DigitalDreams",
       featured: false,
       rating: 4,
       client: "Creative Minds Agency",
@@ -286,7 +291,10 @@ const Portfolio = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-4 left-4 right-4 flex gap-2">
                           <button
-                            onClick={() => window.open(project.liveUrl, '_blank')}
+                            onClick={() => {
+                              trackProjectView(project.title, project.category);
+                              window.open(project.liveUrl, '_blank');
+                            }}
                             className="inline-flex items-center gap-2 px-3 py-2 bg-white/20 backdrop-blur-sm text-white border border-white/30 text-sm font-medium rounded-lg transition-colors hover:bg-white/30"
                           >
                             <Eye className="w-4 h-4" />
@@ -296,7 +304,7 @@ const Portfolio = () => {
                             onClick={() => window.open(project.githubUrl, '_blank')}
                             className="p-2 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-lg transition-colors hover:bg-white/30"
                           >
-                            <Github className="w-4 h-4" />
+                            <GitHubIcon className="w-4 h-4" />
                           </button>
                         </div>
                       </div>
@@ -348,7 +356,10 @@ const Portfolio = () => {
                       {/* Links */}
                       <div className="flex gap-3">
                         <button
-                          onClick={() => window.open(project.liveUrl, '_blank')}
+                          onClick={() => {
+                            trackProjectView(project.title, project.category);
+                            window.open(project.liveUrl, '_blank');
+                          }}
                           className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-lg transition-colors"
                         >
                           View Project
@@ -358,7 +369,7 @@ const Portfolio = () => {
                           onClick={() => window.open(project.githubUrl, '_blank')}
                           className="p-2 border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-lg transition-colors"
                         >
-                          <Github className="w-4 h-4" />
+                          <GitHubIcon className="w-4 h-4" />
                         </button>
                       </div>
                     </div>

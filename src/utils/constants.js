@@ -1,5 +1,29 @@
 // Application Constants
 
+// SEO Configuration
+export const SEO_CONFIG = {
+  DEFAULT_TITLE: "B's DigitalDreams - Professional Web Development & Design",
+  DEFAULT_DESCRIPTION: "Transform your digital presence with professional web development and design services. Specializing in React, modern UI/UX, and e-commerce solutions.",
+  DEFAULT_KEYWORDS: "web development, web design, React developer, UI/UX design, e-commerce, portfolio, digital solutions",
+  SITE_URL: import.meta.env.VITE_SITE_URL || 'https://bs-digitaldreams.vercel.app',
+  AUTHOR: "Onuoha-Mba Bethel",
+  TWITTER_HANDLE: "@BsDigitalDreams"
+};
+
+// Analytics Configuration
+export const ANALYTICS_CONFIG = {
+  GOOGLE_ANALYTICS_ID: import.meta.env.VITE_GA_ID,
+  EVENTS: {
+    PAGE_VIEW: 'page_view',
+    CONTACT_FORM: 'contact_form_submit',
+    PROJECT_VIEW: 'project_view',
+    DOWNLOAD_CV: 'download_cv',
+    DOWNLOAD_PORTFOLIO: 'download_portfolio',
+    SOCIAL_CLICK: 'social_media_click',
+    THEME_TOGGLE: 'theme_toggle'
+  }
+};
+
 // API Configuration
 export const API_CONFIG = {
   BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001',
@@ -145,15 +169,7 @@ export const FORM_CONFIG = {
   ],
 };
 
-// SEO Configuration
-export const SEO_CONFIG = {
-  DEFAULT_TITLE: "B's DigitalDreams - Professional Web Development & Design Services",
-  DEFAULT_DESCRIPTION: 'Transform your digital presence with expert web development, responsive design, and modern solutions that drive business growth.',
-  DEFAULT_KEYWORDS: 'web development, web design, responsive design, React development, portfolio website, business website, e-commerce, UI/UX design',
-  SITE_URL: 'https://bettyempire.vercel.app',
-  AUTHOR: 'Onuoha-Mba Bethel',
-  TWITTER_HANDLE: '@bettyempire',
-};
+
 
 // Performance Configuration
 export const PERFORMANCE_CONFIG = {
@@ -199,17 +215,7 @@ export const STORAGE_KEYS = {
   VISITED: 'bettyempire-visited',
 };
 
-// Analytics Configuration
-export const ANALYTICS_CONFIG = {
-  GOOGLE_ANALYTICS_ID: import.meta.env.VITE_GA_ID,
-  EVENTS: {
-    PAGE_VIEW: 'page_view',
-    CONTACT_FORM: 'contact_form_submit',
-    PROJECT_VIEW: 'project_view',
-    DOWNLOAD_CV: 'download_cv',
-    SOCIAL_CLICK: 'social_click',
-  },
-};
+
 
 // Feature Flags
 export const FEATURE_FLAGS = {
