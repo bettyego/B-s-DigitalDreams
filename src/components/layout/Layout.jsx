@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import ScrollToTop from '../common/ScrollToTop';
+import FloatingEmail from '../common/FloatingEmail';
 import { useTheme } from '../../context/ThemeContext';
 import { trackPageView } from '../../utils/analytics';
 
@@ -34,7 +35,10 @@ const Layout = ({ children }) => {
       {showHeaderFooter && <Footer />}
       
       <ScrollToTop />
-      
+
+      {/* Floating Email Button */}
+      <FloatingEmail />
+
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"

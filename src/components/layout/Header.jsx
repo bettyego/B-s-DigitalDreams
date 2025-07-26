@@ -45,8 +45,8 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg text-gray-900' 
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-lg text-gray-900'
           : 'bg-white/10 backdrop-blur-md text-white'
       }`}
     >

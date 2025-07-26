@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { usePageSEO } from '../../hooks/useSEO';
 import { trackFormSubmission } from '../../utils/analytics';
+import EmailComponent from '../ui/EmailComponent';
 import {
   Mail,
   Phone,
@@ -430,22 +431,12 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Quick Contact */}
-              <Card padding="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-                <div className="flex items-center gap-4 mb-4">
-                  <MessageCircle className="w-8 h-8" />
-                  <h3 className="text-xl font-bold">Quick Response</h3>
-                </div>
-                <p className="mb-4">
-                  Need a quick answer? Send me a direct message and I'll respond within a few hours.
-                </p>
-                <a
-                  href={`mailto:nwabethroseonuoha@gmail.com?subject=Quick Message from ${window.location.hostname}&body=Hi Bethel,%0D%0A%0D%0AI'd like to discuss a project with you.%0D%0A%0D%0ABest regards`}
-                  className="px-6 py-3 bg-white text-purple-600 hover:bg-purple-50 font-semibold rounded-lg transition-colors text-center"
-                >
-                  Send Quick Message
-                </a>
-              </Card>
+              {/* Email Component */}
+              <EmailComponent
+                variant="default"
+                size="medium"
+                className="h-full"
+              />
             </motion.div>
           </div>
         </div>

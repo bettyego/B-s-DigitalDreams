@@ -85,11 +85,11 @@ const Footer = () => {
               <div className="flex items-center text-sm text-purple-200">
                 <Mail className="w-4 h-4 mr-2" />
                 <a
-                  href="mailto:nwabethroseonuoha@gmail.com?subject=Project Inquiry from Website&body=Hi Bethel,%0D%0A%0D%0AI'm interested in discussing a project with you.%0D%0A%0D%0ABest regards"
+                  href="mailto:bethelmba69@gmail.com?subject=Project Inquiry from Website&body=Hi Bethel,%0D%0A%0D%0AI'm interested in discussing a project with you.%0D%0A%0D%0ABest regards"
                   className="hover:text-white transition-colors"
-                  onClick={() => trackSocialClick('Email', 'nwabethroseonuoha@gmail.com')}
+                  onClick={() => trackSocialClick('Email', 'bethelmba69@gmail.com')}
                 >
-                  nwabethroseonuoha@gmail.com
+                  bethelmba69@gmail.com
                 </a>
               </div>
               <div className="flex items-center text-sm text-purple-200">
